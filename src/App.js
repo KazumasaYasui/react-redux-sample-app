@@ -1,7 +1,18 @@
 import React from 'react';
 
 function App() {
-  return <h1>Hello World!!</h1>
+  const first = "Kazu";
+  const last = "Yasu"
+  const dom = (
+      <React.Fragment>
+        <h1 className="foo">Hi, { first + last }!!</h1>
+        <label htmlFor="bar">bar</label>
+        <input type="text" onClick={() => {console.log("I'm clicked.")}}/>
+        <label htmlFor="baz">baz</label>
+        <input type="text" onChange={() => {console.log("I'm changed.")}}/>
+      </React.Fragment>
+  );
+  return dom
 }
 
 // function App() {
