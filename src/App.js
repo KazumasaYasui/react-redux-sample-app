@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 // class App extends Component {
 //     render() {
@@ -42,16 +43,16 @@ import React, { Component } from 'react';
 
 const App = () => {
     const profiles = [
-        { name: "Taro", age: 11 },
-        { name: "John", age: 23 },
-        { name: "Jose", age: 44 },
-        { name: "Xi" },
+        { id: 1, name: "Taro", age: 11 },
+        { id: 2, name: "John", age: 23 },
+        { id: 3, name: "Jose", age: 44 },
+        { id: 4, name: "Xi" },
     ]
     return (
         <div>
             {
                 profiles.map((profile, index) => {
-                    return <User name={profile.name} age={profile.age} key={index}/>
+                    return <User id={profile.id} name={profile.name} age={profile.age} key={index}/>
                 })
             }
         </div>
@@ -59,11 +60,17 @@ const App = () => {
 }
 
 const User = (props) => {
-    return <div>Hi, I'm {props.name} and {props.age} years old!</div>
+    return <div>Hi, I'm {props.name} and {props.age} years old! (id: {props.id})</div>
 }
 
 User.defaultProps = {
     age: 1
+}
+
+User.propTypes = {
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string,
+    age: PropTypes.number
 }
 
 export default App;
